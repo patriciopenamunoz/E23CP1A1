@@ -11,9 +11,16 @@
         var timer_tag = document.getElementById('timer');
         var timer = timer_tag.innerHTML;
         timer = parseInt(timer);
-        setInterval(function(){
+        var bomb = setInterval(function(){
           timer = timer - 1
-          timer_tag.innerHTML = timer
+          if(timer == 0){
+            timer_tag.innerHTML = 'BOOM!';
+            document.getElementsByTagName('body')[0]
+                    .style.backgroundColor = 'red';
+            clearInterval(bomb);
+          }else{
+            timer_tag.innerHTML = timer;
+          }
         }, 1000);
     </script>
   </body>
