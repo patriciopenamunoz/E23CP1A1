@@ -27,7 +27,7 @@
 </ol>
 
 <script>
-var asdf = [{
+var arr = [{
     "completed":false,
     "id":1,
     "title":"Delectus aut autem",
@@ -78,6 +78,36 @@ var asdf = [{
     "id":10,
     "title":"Illo est ratione doloremque quia maiores aut",
   }];
+
+  function resolveTask(id) {
+    var task = arr.find(x => x.id == id);
+    task.completed = !task.completed;
+    sortList();
+  }
+
+  function sortList() {
+    var todo = document.getElementById('todo');
+    var done = document.getElementById('done');
+    var li = document.getElementsByTagName('li');
+
+    for(var i = li.length - 1; i >= 0; i--){
+      li[i].remove();
+    }
+
+    arr.forEach(x => {
+      var li = document.createElement('li');
+      li.setAttribute('id', x.id);
+      li.setAttribute('onClick', 'resolveTask('+x.id+')');
+      li.innerHTML = x.title;
+      if(x.completed){
+        done.appendChild(li);
+      }else{
+        todo.appendChild(li);
+      }
+    });
+  }
+
+  sortList();
 </script>
 </body>
 </html>
