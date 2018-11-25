@@ -5,22 +5,37 @@
     <title></title>
   </head>
   <body>
+    <button class="btn" type="button" name="button" onclick="clearEntry()">CE</button>
+    <br><br>
     <input type="text" name="calculator" value="">
+    <br><br>
+    <button class="btn" type="button" name="button" onclick="setCalc(1)">1</button>
+    <button class="btn" type="button" name="button" onclick="setCalc(2)">2</button>
+    <button class="btn" type="button" name="button" onclick="setCalc(3)">3</button>
+    <button class="btn" type="button" name="button" onclick="setCalc(4)">4</button>
+    <button class="btn" type="button" name="button" onclick="setCalc(5)">5</button>
+    <button class="btn" type="button" name="button" onclick="setCalc(6)">6</button>
+    <button class="btn" type="button" name="button" onclick="setCalc(7)">7</button>
+    <button class="btn" type="button" name="button" onclick="setCalc(8)">8</button>
+    <button class="btn" type="button" name="button" onclick="setCalc(9)">9</button>
+    <button class="btn" type="button" name="button" onclick="setCalc(0)">0</button>
     <br>
-    <button class="btn" type="button" name="button">1</button>
-    <button class="btn" type="button" name="button">2</button>
-    <button class="btn" type="button" name="button">3</button>
-    <button class="btn" type="button" name="button">4</button>
-    <button class="btn" type="button" name="button">5</button>
-    <button class="btn" type="button" name="button">6</button>
-    <br>
-    <button class="btn" type="button" name="button">+</button>
-    <button class="btn" type="button" name="button">-</button>
+    <button class="btn" type="button" name="button" onclick="setCalc(' + ')">+</button>
+    <button class="btn" type="button" name="button" onclick="setCalc(' - ')">-</button>
+    <button class="btn" type="button" name="button" onclick="setCalc(' * ')">*</button>
+    <button class="btn" type="button" name="button" onclick="setCalc(' / ')">/</button>
     <br>
     <button class="result" type="button" name="result" onclick="calcTotal()">=</button>
+
     <script type="text/javascript">
       var result = document.getElementsByName("result")[0];
       var calculator = document.getElementsByName("calculator")[0];
+      var setCalc = function(value){
+        calculator.value += value;
+      }
+      var clearEntry = function(){
+        calculator.value = '';
+      }
       var calcTotal = function(){
         calculator.value = eval(calculator.value);
       }
