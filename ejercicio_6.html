@@ -6,7 +6,7 @@
     <title></title>
 </head>
 <body>
-    <button>Clasificar Arreglo</button>
+    <button onclick="sortList()">Clasificar Arreglo</button>
     <ul id="par">
         <strong>Pares</strong>
     </ul>
@@ -18,6 +18,22 @@
     </ul>
     <script>
         var arr = [1,'dos','tres',4,5,6,'siete',8,9,'diez'];
+
+        function sortList() {
+
+          var arr_par = arr.filter(x => x % 2 == 0);
+          var arr_impar = arr.filter(x => x % 2 != 0 && typeof x == 'number');
+          var arr_string = arr.filter(x => typeof x == 'string');
+
+          [['par',arr_par],['impar',arr_impar],
+           ['string',arr_string]].forEach((x) => {
+             x[1].forEach(y => {
+               var li = document.createElement('li');
+               li.innerHTML = y;
+               document.getElementById(x[0]).appendChild(li);
+             });
+          });
+        }
     </script>
 </body>
 </html>
